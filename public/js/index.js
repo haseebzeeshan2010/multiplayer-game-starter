@@ -110,4 +110,3 @@ function animate() {
 }
 
 animate()
-spawnEnemies()
