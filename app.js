@@ -11,3 +11,6 @@ app.get('/', (req, res) => { //Sends file of index.html if visiting url homepage
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+
+console.log('server loaded')
