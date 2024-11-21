@@ -14,24 +14,24 @@ app.get('/', (req, res) => { //Sends file of index.html if visiting url homepage
   res.sendFile(__dirname + '/index.html')
 })
 
-const players = {}
+const backEndPlayers = {}
 
 io.on('connection', (socket) => {
   console.log('a user connected');
-  players[socket.id] = {
+  backEndPlayers[socket.id] = {
     x: 500 * Math.random(),
     y: 500 * Math.random(),
   }
 
-  io.emit('updatePlayers', players) //broadcasts event to update player frontend
+  io.emit('updatePlayers', backEndPlayers) //broadcasts event to update player frontend
 
   socket.on('disconnect', (reason) => {
     console.log(reason)
-    delete players[socket.id]
-    io.emit('updatePlayers', players)
+    delete backEndPlayers[socket.id]
+    io.emit('updatePlayers', backEndPlayers)
   })
 
-  console.log(players)
+  console.log(backEndPlayers)
 });
 
 server.listen(port, () => {
