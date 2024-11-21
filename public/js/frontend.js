@@ -21,8 +21,8 @@ socket.on('updatePlayers', (backEndPlayers) => {
       frontEndPlayers[id] = new Player({
         x:backEndPlayer.x, 
         y:backEndPlayer.y, 
-        radius:10, 
-        color:'hsl(0,100%,50%)'
+        radius: 10, 
+        color: backEndPlayer.color
       })
     }
   }
