@@ -54,18 +54,24 @@ animate()
 
 
 window.addEventListener('keydown', (event) => {
+  if (!frontEndPlayers[socket.id]) return
+  
   switch(event.code) {
     case 'KeyW':
-      
+      frontEndPlayers[socket.id].y -=5
+      socket.emit('keydown', 'KeyW')
       break
     case 'KeyA':
-      
+      frontEndPlayers[socket.id].x -=5
+      socket.emit('keydown', 'KeyA')
       break 
     case 'KeyS':
-      
+      frontEndPlayers[socket.id].y +=5
+      socket.emit('keydown', 'KeyS')
       break
     case 'KeyD':
-      
+      frontEndPlayers[socket.id].x +=5
+      socket.emit('keyrdown', 'KeyD')
       break   
   }
 })
