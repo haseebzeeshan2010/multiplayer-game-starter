@@ -51,3 +51,21 @@ function animate() {
 }
 
 animate()
+
+
+window.addEventListener('keydown', (event) => {
+  switch(event.code) {
+    case 'KeyW':
+      
+      break
+    case 'KeyA':
+      
+      break 
+    case 'KeyS':
+      
+      break
+    case 'KeyD':
+      
+      break   
+  }
+})
