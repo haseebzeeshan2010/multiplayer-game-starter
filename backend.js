@@ -16,6 +16,9 @@ app.get('/', (req, res) => { //Sends file of index.html if visiting url homepage
 
 const backEndPlayers = {}
 
+const SPEED = 5
+
+
 io.on('connection', (socket) => {
   console.log('a user connected');
   backEndPlayers[socket.id] = {
@@ -32,8 +35,38 @@ io.on('connection', (socket) => {
     io.emit('updatePlayers', backEndPlayers)
   })
 
+
+
+
+  socket.on('keydown', (keycode) => {
+    switch(keycode) {
+      case 'KeyW':
+        // frontEndPlayers[socket.id].y -=5
+        backEndPlayers[socket.id].y -= SPEED
+        break
+      case 'KeyA':
+        // frontEndPlayers[socket.id].x -=5
+        backEndPlayers[socket.id].x -= SPEED
+        break 
+      case 'KeyS':
+        // frontEndPlayers[socket.id].y +=5
+        console.log("yess")
+        backEndPlayers[socket.id].y += SPEED
+        break
+      case 'KeyD':
+        // frontEndPlayers[socket.id].x +=5
+        console.log("help")
+        backEndPlayers[socket.id].x += SPEED
+        break   
+    }
+  })
   console.log(backEndPlayers)
 });
+
+
+setInterval(() => {
+  io.emit('updatePlayers', backEndPlayers)
+}, 15)
 
 server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
